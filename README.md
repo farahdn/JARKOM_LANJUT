@@ -85,3 +85,30 @@ Firewall dalam Mikrotik merupakan sebuah fitur yang bertugas untuk memonitor  da
 **4. Jelaskan menurut anda apa itu NAT ?**
 
 Network Address Translation atau NAT merupakan sebuah metode yang digunakan untuk mengkonversi alamat IP Privat yang berada di dalam jaringan lokal menjadi alamat IP Publik yang dapat diakses melalui internet dengan menggunakan satu alamat IP Publik.
+
+## **CASED** 
+**Analisis UTS Jaringan Komputer Lanjut**
+
+Analisis ini membahas skenario di mana ISP digunakan sebagai pengganti IP publik untuk menghubungkan tiga lokasi, masing-masing dengan satu perangkat Mikrotik. Komunikasi antar-lokasi dilakukan melalui konfigurasi jaringan berbasis tunnel, memanfaatkan jaringan internet yang disediakan oleh ISP.
+
+**Langkah-langkah Konfigurasi**
+
+**1. Konfigurasi Dasar Mikrotik di Setiap Lokasi**
+- Lokasi: KJ, CR, dan HI.
+- Pengaturan dimana setiap Mikrotik dikonfigurasi dengan:
+    - IP lokal untuk jaringan internal.
+    - IP publik dari ISP pada antarmuka internetnya.
+  - DHCP Server diaktifkan pada setiap Mikrotik, memungkinkan perangkat di jaringan lokal mendapatkan IP secara otomatis.
+  - NAT diaktifkan agar perangkat-perangkat di jaringan lokal dapat mengakses internet melalui IP publik.
+
+### 2. Pembuatan Tunnel Antar-Lokasi
+- Setiap Mikrotik membangun tunnel yang terhubung melalui ISP.
+- Contoh implementasi:
+  - Mikrotik di lokasi KJ memiliki tunnel yang diarahkan ke ISP.
+  - Konfigurasi serupa diterapkan pada Mikrotik di lokasi CR dan HI.
+- Tunnel ini memungkinkan aliran data langsung antar-lokasi melalui IP publik dari ISP.
+
+### 3. Konfigurasi Routing Statis
+- Setiap Mikrotik diatur dengan routing statis untuk mengarahkan lalu lintas ke lokasi lain.
+- Dengan konfigurasi ini, perangkat di lokasi KJ, CR, dan HI dapat berkomunikasi satu sama lain.
+- ISP menyediakan IP publik, sementara mekanisme tunneling dan enkripsi menjamin keamanan dan efisiensi komunikasi antar-lokasi.
